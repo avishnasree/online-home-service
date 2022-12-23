@@ -1,0 +1,25 @@
+{% extends 'user.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">PAYMENT</h4>
+                  <form method="post">
+                      {% csrf_token %}
+                      <div class="d-grid gap-3 p-4">
+                          <label class="form-label">Payment</label>
+                                            <input required class="form-control" readonly value="{{payment.payment}}">
+                                        <label class="form-label">Date</label>
+                                        <input class="form-control" readonly value="{{payment.date}}">
+                                        <label class="form-label">Time</label>
+                                        <input class="form-control" readonly value="{{payment.time}}">
+                                        <div class="d-grid gap-3 d-md-block">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                </div>
+              </div>
+            </div>
+{% endblock %}

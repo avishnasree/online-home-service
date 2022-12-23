@@ -1,0 +1,44 @@
+{% extends 'user.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+
+      <div class="card-details">
+        <p>PAYMENT</p>
+
+        <div class="card-number">
+          <label> Card Number </label>
+          <input
+            type="text"
+            class="card-number-field"
+            placeholder="###-###-###"/>
+        </div>
+        <br />
+        <div class="date-number">
+          <label> Expiry Date </label>
+          <input type="text" class="date-number-field"
+                 placeholder="DD-MM-YY" />
+        </div>
+
+        <div class="cvv-number">
+          <label> CVV number </label>
+          <input type="text" class="cvv-number-field"
+                 placeholder="xxx" />
+        </div>
+        <div class="nameholder-number">
+          <label> Card Holder name </label>
+          <input
+            type="text"
+            class="card-name-field"
+            placeholder="Enter your Name"/>
+        </div>
+        {% for i in a %}
+       {% if i.status == 0 %}
+        <a type="button" class="btn btn-success" href="{% url 'pay_bttn' %}">PAY NOW</a>
+        <a type="button" class="btn btn-success" href="{% url 'pay_direct' i.id %}">DIRECT PAYMENT</a>
+        {% else %}
+        <button type="button" class="btn btn-danger">BILL PAID</button>
+        {% endif %}
+      </div>
+    </div>
+{% endblock %}
